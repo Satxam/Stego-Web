@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stego-Web | Digital Forensics Tool</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; text-align: center; padding: 40px; }
+        .container { max-width: 800px; margin: 0 auto; display: flex; gap: 20px; }
+        .card { background: white; padding: 30px; border-radius: 15px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        
+      
+        input, textarea { width: 90%; margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        
+      
+        button { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background: #45a049; }
+        .decode-btn { background: #2196F3; }
+        .decode-btn:hover { background: #1e88e5; }
+
+        .creator-footer {
+            margin-top: 50px;
+            color: #666;
+            font-size: 14px;
+        }
+        .social-links { margin-top: 10px; }
+        .social-links a { text-decoration: none; color: #4CAF50; font-weight: bold; margin: 0 5px; }
+        .social-links a:hover { text-decoration: underline; }
+        .separator { color: #ccc; }
+    </style>
+</head>
+<body>
+    <h1> Stego-Web Tool</h1>
+    
+    <div class="container">
+        <div class="card">
+            <h2>🔒 Hide Message</h2>
+            <form action="/encode" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" accept=".png, .jpg, .jpeg" required>
+                <textarea name="message" placeholder="Enter secret text..." rows="4" required></textarea>
+                <button type="submit">Encrypt & Download</button>
+            </form>
+            <p style="font-size: 12px; color: #666; margin-top: 15px;">
+                *<strong>PNG</strong> uses LSB (Pixel Hiding)<br>
+                *<strong>JPG</strong> uses Exif (Metadata Hiding)
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🔓 Reveal Message</h2>
+            <form action="/decode" method="post" enctype="multipart/form-data">
+                <input type="file" name="secret_image" accept=".png, .jpg, .jpeg" required>
+                <button type="submit" class="decode-btn">Decode Image</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="creator-footer">
+        <p>Created by <strong>Satyam Krishna</strong></p>
+        <div class="social-links">
+            <a href="https://github.com/Satxam" target="_blank" class="link-github">GitHub</a>
+            <span class="separator">|</span>
+            <a href="https://www.linkedin.com/in/satyam-krishna1/" target="_blank" class="link-linkedin">LinkedIn</a>
+        </div>
+        <p class="footer-date" style="font-size: 11px; margin-top: 5px; opacity: 0.7;">© 2026</p>
+    </footer>
+</body>
+</html>

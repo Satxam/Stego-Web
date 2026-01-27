@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stego-Web | Digital Forensics Tool</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; text-align: center; padding: 40px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #ffffff; text-align: center; padding: 40px; }
         .container { max-width: 800px; margin: 0 auto; display: flex; gap: 20px; }
         .card { background: white; padding: 30px; border-radius: 15px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h2 { color: #333; }
         
-      
-        input, textarea { width: 90%; margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        /* Updated to ensure password fields look good */
+        input, textarea { width: 90%; margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
         
-      
-        button { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+        button { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px;}
         button:hover { background: #45a049; }
         .decode-btn { background: #2196F3; }
         .decode-btn:hover { background: #1e88e5; }
@@ -30,14 +30,17 @@
     </style>
 </head>
 <body>
-    <h1> Stego-Web Tool</h1>
+    <h1>🕵️ Stego-Web Tool</h1>
     
     <div class="container">
         <div class="card">
-            <h2>🔒 Hide Message</h2>
+            <h2>Encrypt Message</h2>
             <form action="/encode" method="post" enctype="multipart/form-data">
                 <input type="file" name="image" accept=".png, .jpg, .jpeg" required>
                 <textarea name="message" placeholder="Enter secret text..." rows="4" required></textarea>
+                
+                <input type="password" name="password" placeholder="🔑 Set a Password (Optional)">
+                
                 <button type="submit">Encrypt & Download</button>
             </form>
             <p style="font-size: 12px; color: #666; margin-top: 15px;">
@@ -47,9 +50,12 @@
         </div>
 
         <div class="card">
-            <h2>🔓 Reveal Message</h2>
+            <h2>Decrypt  Message</h2>
             <form action="/decode" method="post" enctype="multipart/form-data">
                 <input type="file" name="secret_image" accept=".png, .jpg, .jpeg" required>
+                
+                <input type="password" name="password" placeholder="🔑 Enter Password (If required)">
+                
                 <button type="submit" class="decode-btn">Decode Image</button>
             </form>
         </div>
